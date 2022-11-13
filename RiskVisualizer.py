@@ -5,25 +5,40 @@ import os
 
 
 def addAllValuesBelow(items):
-    new_list = []
+    print(f"Items: {items}")
 
-    sorted_current = None
-    if items[1] > 0:
-        sorted_current = sorted(items, reverse=True)
-    else:
-        sorted_current = sorted(items)
+    fixed_pairs = []
 
+    sorted_current = (sorted(items, key=lambda x: x[0]))
+
+    # return sorted_current
     print(sorted_current)
+
+    x_list = [x[0] for x in sorted_current]
+    y_list = [x[1] for x in sorted_current]
+
     for i, x in enumerate(sorted_current):
-        sliced_array = sorted_current[i:]
+        print(f"current: {i} : {y_list[-(i+1)]}")
 
-        print(f"{i}: {x} : {sum(sliced_array)} : {sliced_array} : {sorted_current}")
-
-        new_list.append(sum(sliced_array))
+        if x_list[0] < 0:
+            fixed_pairs.append(
+                (
+                    x_list[i],
+                    sum(y_list[0:(i+1)])
+                )
+            )
+        else:
+            fixed_pairs.append(
+                (
+                    x_list[i],
+                    sum(y_list[i:])
+                )
+            )
+        # print(f"{i}: {x} : {fixed_pairs} : {sorted_current}")
 
     # print(new_list)
 
-    return new_list
+    return fixed_pairs
 
 
 def plotPlotWith(attacker: int, defender: int, plot):
@@ -35,45 +50,35 @@ def plotPlotWith(attacker: int, defender: int, plot):
     with open(plot_file_name) as data_file:
         csv_file = csv.reader(data_file, delimiter=",")
 
-        plt_x = []
-        plt_y = []
-        # print(f"{attacker} attackers, {defender} defendeers")
-
         attackerChance = 0.0
 
-        y_positive = []
-        y_negative = []
+        value_pairs_positive = []
+        value_pairs_negative = []
 
         for row in csv_file:
             # print(row)
-            plt_x.append(int(row[0]))
             if int(row[0]) > 0:
                 attackerChance += float(row[1])
-                y_positive.append(100 * float(row[1]))
+                value_pairs_positive.append((int(row[0]), 100 * float(row[1])))
             else:
-                y_negative.append(100 * float(row[1]))
+                value_pairs_negative.append((int(row[0]), 100 * float(row[1])))
 
-            plt_y.append(100 * float(row[1]))
+        y_positive_corrected = value_pairs_positive
+        if len(value_pairs_positive) > 1:
+            y_positive_corrected = addAllValuesBelow(value_pairs_positive)
+        y_negative_corrected = value_pairs_negative
+        if len(value_pairs_negative) > 1:
+            y_negative_corrected = addAllValuesBelow(value_pairs_negative)
 
-        # plt_x.reverse()
-        # plt_y.reverse()
+        # y_negative_corrected.reverse()
 
-        y_positive_corrected = y_positive
-        if len(y_positive) > 1:
-            y_positive_corrected = addAllValuesBelow(y_positive)
-        y_negative_corrected = y_negative
-        if len(y_negative) > 1:
-            y_negative_corrected = addAllValuesBelow(y_negative)
-
-        y_negative_corrected.reverse()
-
-        y_total_fixed = y_negative_corrected + y_positive_corrected
+        total_graph = y_negative_corrected + y_positive_corrected
         # print(y_total_fixed)
 
         # print(plt_x)
         # print(plt_y)
         #
-        plot.plot(sorted(plt_x), y_total_fixed, 'o-',
+        plot.plot([x[0] for x in total_graph], [y[1] for y in total_graph], 'o-',
                   label=f"{attacker} attackers, {defender} defenders, p={attackerChance:.4f}")
 
         return True
@@ -144,7 +149,7 @@ def main():
                 print(f"Found no data for attacker: {a}, defender: {d}. Exiting.")
                 exit(0)
 
-        plt.xticks(range(-1*int(advantage_range[1]), int(advantage_range[1]) + 1, 1))
+        plt.xticks(range(-1 * int(advantage_range[1]), int(advantage_range[1]) + 1, 1))
 
     else:
         print("Wrong mode entered. Exiting...")
