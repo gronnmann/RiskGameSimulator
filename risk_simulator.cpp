@@ -178,7 +178,7 @@ int main(int argc, char *args[]) {
     string args_output_folder = "";
     if (argc < 3){
         printf("Using default (args_max_attackers = 50, args_max_defenders = 50, args_n_runs = 500000) as no arguments specified.\n");
-        printf("Usage with arguments: ./RiskSimulator.exe {args_output_folder} {args_max_attackers} {args_max_defenders} {args_n_runs}\n");
+        printf("Usage with arguments: ./RiskSimulator.exe {output_folder} {max_attackers} {max_defenders} {n_runs}\n");
         useDefault = true;
     }
     else{

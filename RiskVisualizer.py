@@ -9,9 +9,9 @@ def addAllValuesBelow(items):
 
     sorted_current = None
     if items[1] > 0:
-        sorted_current = sorted(items)
-    else:
         sorted_current = sorted(items, reverse=True)
+    else:
+        sorted_current = sorted(items)
 
     print(sorted_current)
     for i, x in enumerate(sorted_current):
@@ -132,7 +132,7 @@ def main():
         plt.xticks(range(min_def, max_att + 1, 1))
     elif mode == "3":
         advantage = input("Please specify defender advantage (use negative numbers for defender): and range for "
-                          "attacker numbers (for example 1|1:20): ").split("|");
+                          "attacker numbers (for example 1|1:20): ").split("|")
         advantage_range = advantage[1].split(":")
 
         for a in range(int(advantage_range[0]), int(advantage_range[1])):
@@ -144,7 +144,7 @@ def main():
                 print(f"Found no data for attacker: {a}, defender: {d}. Exiting.")
                 exit(0)
 
-        plt.xticks(range(-1*int(advantage_range[0]), int(advantage_range[1]) + 1, 1))
+        plt.xticks(range(-1*int(advantage_range[1]), int(advantage_range[1]) + 1, 1))
 
     else:
         print("Wrong mode entered. Exiting...")
