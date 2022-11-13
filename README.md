@@ -11,7 +11,7 @@ RiskSimulator.exe {output folder} {max attackers to simulate} {max defenders to 
 Please make sure the {output_folder} exists, or the program won't run.
 
 ## Risk Visualizer
-If you don't wish to create your own dataset, but just visualize, you just need to use the RiskVisualizer.
+If you don't wish to create your own dataset, but just visualize, you just need to use the RiskVisualizer. You will have access to premade simulations of up to 50vs50.
 The basic usage is to first install the requirements (PyPlot), and then just use the program:
 ```
 pip install -R requirements.txt
