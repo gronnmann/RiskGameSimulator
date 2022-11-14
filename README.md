@@ -29,21 +29,24 @@ For exmaple in the example here, there's a fight of 2 attacker troops vs 1 defen
 Having that in mind, we can make some interesting statistics
 
 ### Equal amounts of attackers and defenders
-![obraz](https://user-images.githubusercontent.com/13346371/201528634-18e2b813-ab20-4ec3-b135-e87aa25aa21e.png)
+![obraz](https://user-images.githubusercontent.com/13346371/201557616-ca6ec418-061b-4ea9-8d97-e185e9df1dab.png)
 As we see here, with an equal amount of attackers and defenders, the defender has an advantage up until 5v5, where the probability of the attacker winning is 50,83%.
 
 ### Defender advantage - 1 troop
-![obraz](https://user-images.githubusercontent.com/13346371/201528714-3cd57497-5f0c-47c5-984b-36b733c0b437.png)
+![obraz](https://user-images.githubusercontent.com/13346371/201557682-decac747-982c-4b72-8940-32ffb2751076.png)
+
 Here, the defender has one more troop than the attacker. We see the attacker having a quite low win probability up until 11v12, where he will win 50,54% of the time.
 
 ### Defender advantage - 2 troops
-![obraz](https://user-images.githubusercontent.com/13346371/201528774-629225c3-6d40-472a-a83a-27b34bd13ab9.png)
+![obraz](https://user-images.githubusercontent.com/13346371/201557708-092629f9-ab75-4d7d-af03-59f762f8eca4.png)
+
 The same trend can be observed here, up until 17 vs 19
 
 ### Defender advantage - 3 troops
-![obraz](https://user-images.githubusercontent.com/13346371/201528808-81e8928a-558a-4f58-a73d-1bded233ec53.png)
+![obraz](https://user-images.githubusercontent.com/13346371/201557805-57ce810e-f05a-4812-b3e4-69f2e9201784.png)
+
 Same here, up until 23vs26.
 
 ### Attacker advantage
-![obraz](https://user-images.githubusercontent.com/13346371/201528869-2dd8f27b-50c3-405b-a4b6-0a633b8ef0ab.png)
+![obraz](https://user-images.githubusercontent.com/13346371/201557852-a9b4ea18-34cf-4577-a299-ffc73c391026.png)
 As we see, with the attacker having one troop advantage, he willbasically always have the odds on his side.
